@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+/* body{
+  overflow-x: hidden;
+} */
 /* knowlede */
 
 #knowme {
@@ -118,7 +121,12 @@ ul {
   margin: 2rem;
 }
 
-.card-container:hover .card-img-top {
+/* .card-container:hover .card-img-top {
+  transform: scale(1.1);
+  cursor: pointer;
+} */
+
+.card-container:hover{
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -251,3 +259,12 @@ ul {
     height: 400px;
   
 }
+
+/* menu */
+#menu{
+  background-color: #B9CAD4
+}
+
+/* .foto img{
+  object-fit: contain;
+} */

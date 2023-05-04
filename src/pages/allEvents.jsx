@@ -3,22 +3,23 @@ import Menu from "../components/navigasiBar";
 import Footer from "../components/footer";
 import { Container, Card, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-// import ReactPaginate from "react-paginate";
+import { axiosInstance } from "../lib/axios";
 
 const Allevents = () => {
-  const url = "https://fakestoreapi.com/products";
-  const [products, setProducts] = useState([]);
+  const [events, setEvents] = useState([]);
 
-  const getDataProducts = async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-    setProducts(data);
-    // console.log(products);
+  const fetchEvents = async () => {
+    try {
+      const eventResponse = await axiosInstance.get("/product");
+      console.log(eventResponse.data);
+      setEvents(eventResponse.data);
+    } catch (error) {}
   };
 
   useEffect(() => {
-    getDataProducts();
+    fetchEvents();
   });
+
   return (
     <div>
       <Menu />
@@ -26,15 +27,15 @@ const Allevents = () => {
       <Container>
         <div className="container d-flex justify-items-center align-items-center mt-5">
           <div className="row">
-            {products.map((product) => {
+            {events.map((event) => {
               return (
                 <div className="col-md-6 mb-5 col-sm col-lg-4">
                   <CardProduct
-                    key={product.id}
-                    title={product.title}
-                    price={product.price}
-                    image={product.image}
-                    desc={product.description}
+                    key={event.id}
+                    title={event.title}
+                    price={event.price}
+                    image={event.image}
+                    description={event.description}
                   />
                 </div>
               );
@@ -58,7 +59,7 @@ const CardProduct = (props) => {
       />
       <Card.Body>
         <Card.Title className="border">{props.title}</Card.Title>
-        <Card.Text className="border deskripsi">{props.desc}</Card.Text>
+        <Card.Text className="border deskripsi">{props.description}</Card.Text>
         {/* <time className="border">{props.date}</time> */}
         <div className="text-center my-4">
           <Button variant="dark" className="shining-button" type="submit">

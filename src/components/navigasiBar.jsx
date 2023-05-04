@@ -14,6 +14,7 @@ const Menu = () => {
           <Nav>
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/events">Event</Nav.Link>
+            {/* <Nav.Link href="/crud">Crud</Nav.Link> */}
             <Nav.Link href="/calendar"><img src={iconCalendar} alt="" className="w-50" /></Nav.Link>
           </Nav>
         </Navbar.Collapse>

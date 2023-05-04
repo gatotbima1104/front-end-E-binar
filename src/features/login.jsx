@@ -17,13 +17,19 @@ const Login = () => {
             </div>
             <div className="row mb-5">
               <Form className="form">
-                <Form.Group className="mb-3 was-validated" controlId="formBasicEmail">
+                <Form.Group
+                  className="mb-3 was-validated"
+                  controlId="formBasicEmail"
+                >
                   <Form.Control type="email" placeholder="id/email" required />
                   <div className="invalid-feedback">
                     Please enter your email
                   </div>
                 </Form.Group>
-                <Form.Group className="mb-3 was-validated" controlId="formBasicPassword">
+                <Form.Group
+                  className="mb-3 was-validated"
+                  controlId="formBasicPassword"
+                >
                   <Form.Control
                     type="password"
                     placeholder="Password"
@@ -37,7 +43,9 @@ const Login = () => {
                   <a href="#forgetPassword">Lupa password?</a>
                 </div>
                 <div className="text-center mt-5 button">
-                  <Button type="submit" href="/">masuk</Button>
+                  <Button type="submit" href="/">
+                    masuk
+                  </Button>
                 </div>
               </Form>
             </div>

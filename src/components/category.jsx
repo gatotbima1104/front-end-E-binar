@@ -22,11 +22,7 @@ const Kategories = [
   {
     kategori: "Tech",
     Image: category4
-  },
-  // {
-  //   kategori: "vape",
-  //   Image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.xV51K6_FOM_d2gYNThUl6gHaE8%26pid%3DApi&f=1&ipt=a8748540563312cb2304328b2b01193dcd349d05f49619219b071a3c5cf6f736&ipo=images"
-  // }
+  }
 ]
 
 const Cards = () => {
