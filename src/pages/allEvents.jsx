@@ -10,7 +10,7 @@ const Allevents = () => {
 
   const fetchEvents = async () => {
     try {
-      const eventResponse = await axiosInstance.get("/product");
+      const eventResponse = await axiosInstance.get("/event");
       console.log(eventResponse.data);
       setEvents(eventResponse.data);
     } catch (error) {}

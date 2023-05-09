@@ -29,7 +29,7 @@ const Cards = () => {
   return (
     <div>
       <Container>
-        <h2 className="my-5">Kategori</h2>
+        <h2 className="my-5 text-category fs-3">Kategori</h2>
         <div className="container d-flex justify-content-center align-items-center"> 
             <div className="row">
                {Kategories.map((category, index) => (
@@ -37,7 +37,7 @@ const Cards = () => {
                   <Card style={{ width: '13rem' }} className='m-auto mb-4 card-container'>
                   <Card.Img variant="top" src={category.Image} />
                   <Card.Body>
-                      <Card.Title>{category.kategori}</Card.Title>
+                      <Card.Title className="text-category" >{category.kategori}</Card.Title>
                   </Card.Body>
                   </Card>
                 </div>      
