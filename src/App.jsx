@@ -16,8 +16,8 @@ function App() {
          <Route path="/login" element={<Login />} />
          <Route path="/register" element={<Register />} />
          <Route path="/events" element={<Allevents />} />
-         
          {/* <Route path="/event/:id" element={<EventDetails />} /> */}
+          {/* <Route path="/footer" element={<Footer />} /> */}
         </Routes>
       </Router>
   );
