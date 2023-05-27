@@ -3,6 +3,7 @@ import Menu from "../components/navigasiBar";
 import Footer from "../components/footer";
 import { Container, Card, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
 import search from "../asset/search.png";
 import owner from "../asset/owner.png";
@@ -45,16 +46,21 @@ const Allevents = () => {
             </Form>
           </div>
         </div>
-          <div className="container">
-            <div className="row d-flex justify-items-center pt-5">
-              {events.map((event) => (
-                <div className="col-md-6 mb-5 col-sm col-lg-3">
-                  <Card style={{ width: "16rem", height: "auto" }} className="m-5 m-auto events">
+        <div className="container">
+          <div className="row d-flex justify-items-center pt-5">
+            {events.map((event) => (
+              <div className="col-md-6 mb-5 col-sm col-lg-3">
+                  <Card
+                    style={{ width: "16rem", height: "auto" }}
+                    className="m-5 m-auto events"
+                  >
                     <Card.Img variant="top" src={event.image} />
                     <Card.Body>
+                    <Link to={`/event/${event.id}`}>
                       <Card.Title className="text-white title mb-0">
                         {event.title}
                       </Card.Title>
+                      </Link>
                       <p className="date">
                         <time className="text-white">{event.date}</time>
                       </p>
@@ -73,11 +79,11 @@ const Allevents = () => {
                       </div>
                     </Card.Body>
                   </Card>
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </Container>
+        </div>
+      </Container>
       <Footer />
     </div>
   );

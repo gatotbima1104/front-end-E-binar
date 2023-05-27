@@ -4,8 +4,9 @@ import Home from './pages/homepage';
 import Login from './features/login';
 import Register from './features/register';
 import Allevents from "./pages/allEvents";
+import DetailPage from "./pages/detailPage";
+import InsertEvent from "./pages/insertEvent";
 
-// import EventDetails from "./components/eventDetails";
 
 
 function App() {
@@ -16,8 +17,8 @@ function App() {
          <Route path="/login" element={<Login />} />
          <Route path="/register" element={<Register />} />
          <Route path="/events" element={<Allevents />} />
-         {/* <Route path="/event/:id" element={<EventDetails />} /> */}
-          {/* <Route path="/footer" element={<Footer />} /> */}
+         <Route path="/event/:id" element={<DetailPage />} />
+         <Route path="/addEvent" element={<InsertEvent />} />
         </Routes>
       </Router>
   );
