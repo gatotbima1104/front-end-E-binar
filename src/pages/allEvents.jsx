@@ -5,29 +5,27 @@ import { Container, Card, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
-// import search from "../asset/search.png";
 import owner from "../asset/owner.png";
 import ReactPaginate from "react-paginate";
-import { Pagination } from "react-bootstrap";
 
 const Allevents = () => {
   const [events, setEvents] = useState([]);
   const [record, setRecord] = useState([]);
-  // const [pageNumber, setPageNumber] = useState(0);
-
-  // const eventsPerPage = 8;
-  // const pagesVisited = pageNumber * eventsPerPage;
-  // const pageCount = Math.ceil(record.length / eventsPerPage);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [postsPerPage] = useState(8);
 
   const handlePageClick = (data) => {
-      console.log(data.selected);
-  }
+    const selectedPage = data.selected;
+    setCurrentPage(selectedPage);
+  };
   
+  const lastPostIndex = (currentPage + 1) * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = record.slice(firstPostIndex, lastPostIndex);  
 
   const fetchDataEvents = async () => {
     try {
       const eventResponse = await axiosInstance.get("/event");
-      // console.log(eventResponse.data);
       setEvents(eventResponse.data);
       setRecord(eventResponse.data);
     } catch (error) {}
@@ -43,9 +41,8 @@ const Allevents = () => {
       const lowerCaseTitle = f.title.toLowerCase();
       const lowerCaseInput = e.target.value.toLowerCase();
       const isTitleMatch = lowerCaseTitle.includes(lowerCaseInput);
-      const isDateMatch = f.date.toLowerCase().includes(lowerCaseInput); // Assuming 'date' is a property in the 'events' array
-      const isPriceMatch = f.price.toString().includes(lowerCaseInput); // Assuming 'price' is a number property in the 'events' array
-      
+      const isDateMatch = f.date.toLowerCase().includes(lowerCaseInput);
+      const isPriceMatch = f.price.toString().includes(lowerCaseInput); 
       return isTitleMatch || isDateMatch || isPriceMatch;
     }));
     
@@ -77,13 +74,15 @@ const Allevents = () => {
         </div>
         <div className="container">
           <div className="row d-flex justify-items-center pt-5">
-            {record.map((event) => (
+            {currentPosts.map((event) => (
               <div className="col-md-6 mb-5 col-sm col-lg-3">
                   <Card
                     style={{ width: "16rem", height: "auto" }}
                     className="m-5 m-auto events"
                   >
-                    <Card.Img variant="top" src={event.image} />
+                    <Card.Img variant="top" src={event.image} 
+                    style={{ objectFit: "cover", height: "150px" }}
+                    />
                     <Card.Body>
                     <Link to={`/event/${event.id}`}>
                       <Card.Title className="text-white title mb-0">
@@ -112,17 +111,21 @@ const Allevents = () => {
             ))}
           </div>
         </div>
-          
-      <Pagination >
         
-        <Pagination.Prev />
-        <Pagination.Item>{1}</Pagination.Item>
-        <Pagination.Ellipsis />
-        {/* <Pagination.Item active>{12}</Pagination.Item> */}        
-        <Pagination.Item>{20}</Pagination.Item>
-        <Pagination.Next />
-        
-      </Pagination>
+        <div className="pagination">
+          <ReactPaginate
+          previousLabel={"prev"}
+          nextLabel={"next"}
+          breakLabel={"..."}
+          pageCount={Math.ceil(record.length / postsPerPage)}
+          marginPagesDisplayed={3}
+          pageRangeDisplayed={3}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination-container"}
+          activeClassName={"active"}
+          />
+        </div>
+
 
       </Container>
       <Footer />
@@ -130,26 +133,5 @@ const Allevents = () => {
   );
 };
 
-// const CardProduct = (props) => {
-//   return (
-//     <Card className="p-3 m-auto events d-flex justify-items-center align-items-center h-100">
-//       <Card.Img
-//         variant="top"
-//         src={props.image}
-//         className="border"
-//         style={{ width: "100%" }}
-//       />
-//       <Card.Body>
-//         <Card.Title className="border">{props.title}</Card.Title>
-//         <Card.Text className="border deskripsi">{props.description}</Card.Text>
-//         <div className="text-center my-4">
-//           <Button variant="dark" className="shining-button" type="submit">
-//             read more
-//           </Button>
-//         </div>
-//       </Card.Body>
-//     </Card>
-//   );
-// };
 
 export default Allevents;

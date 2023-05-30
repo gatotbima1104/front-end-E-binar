@@ -113,7 +113,9 @@ const Events = () => {
                   style={{ width: "16rem", height: "auto" }}
                   className="m-5 m-auto events"
                 >
-                  <Card.Img variant="top" src={event.image} />
+                  <Card.Img variant="top" src={event.image} 
+                  style={{ objectFit: "cover", height: "150px" }}
+                  />
                   <Card.Body>
                     <Card.Title className="text-white title mb-0">
                       {event.title}
