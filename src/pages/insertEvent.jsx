@@ -10,23 +10,30 @@ const InsertEvent = () => {
     price: "",
     image: "",
     date: "",
-  });//[event, setEvent
-  const handleInput = (e) => {
-    setEvent({ ...event, [e.target.name]: e.target.value});
-  }
+  });
 
-  function handleSubmit(e){
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    const parsedValue = name === "price" ? parseInt(value) : value;
+    setEvent({ ...event, [name]: parsedValue });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axiosInstance.post("/event", event)
-    .then((res) => {
-        console.log(res);
+
+    try {
+      const response = await axiosInstance.post("/event", JSON.stringify(event), {
+        headers: {
+          "Content-Type": "application/json"
         }
-    )
-    .catch((err) => {
-        console.log(err);
+      });
+      console.log(response.data);
+      // Do something with the response, e.g., display a success message
+    } catch (error) {
+      console.error(error);
+      // Handle error, e.g., display an error message
     }
-    );
-  }
+  };
 
 
   return (
@@ -35,29 +42,33 @@ const InsertEvent = () => {
         <div className="col-md-6">
           <h1>Insert Event</h1>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="Enter title" name="title" onChange={handleInput}/>
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>description</Form.Label>
-              <Form.Control type="text" placeholder="Enter title" name="description" onChange={handleInput}/>
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>price</Form.Label>
-              <Form.Control type="int" placeholder="Enter title" name="price" onChange={handleInput}/>
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>image</Form.Label>
-              <Form.Control type="text" placeholder="Enter title" name="image" onChange={handleInput}/>
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>date</Form.Label>
-              <Form.Control type="text" placeholder="Enter title" name="date" onChange={handleInput}/>
-            </Form.Group>
+        <Form.Group controlId="formBasicTitle">
+          <Form.Label>Title</Form.Label>
+          <Form.Control type="text" name="title" value={event.title} onChange={handleInputChange} />
+        </Form.Group>
 
-            <button className="btn btn-primary">Submit</button>
-          </Form>
+        <Form.Group controlId="formBasicDescription">
+          <Form.Label>Description</Form.Label>
+          <Form.Control type="text" name="description" value={event.description} onChange={handleInputChange} />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPrice">
+          <Form.Label>Price</Form.Label>
+          <Form.Control type="number" name="price" value={event.price} onChange={handleInputChange} />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicImage">
+          <Form.Label>Image</Form.Label>
+          <Form.Control type="text" name="image" value={event.image} onChange={handleInputChange} />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicDate">
+          <Form.Label>Date</Form.Label>
+          <Form.Control type="text" name="date" value={event.date} onChange={handleInputChange} />
+        </Form.Group>
+
+        <button type="submit mt-5">Submit</button>
+      </Form>
         </div>
       </div>
     </div>
