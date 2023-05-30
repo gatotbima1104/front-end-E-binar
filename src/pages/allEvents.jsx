@@ -5,23 +5,51 @@ import { Container, Card, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
-import search from "../asset/search.png";
+// import search from "../asset/search.png";
 import owner from "../asset/owner.png";
+import ReactPaginate from "react-paginate";
+import { Pagination } from "react-bootstrap";
 
 const Allevents = () => {
   const [events, setEvents] = useState([]);
+  const [record, setRecord] = useState([]);
+  // const [pageNumber, setPageNumber] = useState(0);
+
+  // const eventsPerPage = 8;
+  // const pagesVisited = pageNumber * eventsPerPage;
+  // const pageCount = Math.ceil(record.length / eventsPerPage);
+
+  const handlePageClick = (data) => {
+      console.log(data.selected);
+  }
+  
 
   const fetchDataEvents = async () => {
     try {
       const eventResponse = await axiosInstance.get("/event");
-      console.log(eventResponse.data);
+      // console.log(eventResponse.data);
       setEvents(eventResponse.data);
+      setRecord(eventResponse.data);
     } catch (error) {}
   };
 
   useEffect(() => {
     fetchDataEvents();
-  });
+  }, [])
+
+  const Filter = (e) => {
+    // setRecord(events.filter(f => f.title.toLowerCase().includes(e.target.value))) // filter by title
+    setRecord(events.filter(f => {
+      const lowerCaseTitle = f.title.toLowerCase();
+      const lowerCaseInput = e.target.value.toLowerCase();
+      const isTitleMatch = lowerCaseTitle.includes(lowerCaseInput);
+      const isDateMatch = f.date.toLowerCase().includes(lowerCaseInput); // Assuming 'date' is a property in the 'events' array
+      const isPriceMatch = f.price.toString().includes(lowerCaseInput); // Assuming 'price' is a number property in the 'events' array
+      
+      return isTitleMatch || isDateMatch || isPriceMatch;
+    }));
+    
+  }
 
   return (
     <div>
@@ -37,18 +65,19 @@ const Allevents = () => {
                 type="text"
                 placeholder="Search. . . ."
                 className="footer-form search-input"
+                onChange={Filter}
               />
-              <button className="footer-btn jelajah fw-bold search-button p-1">
+              {/* <button className="footer-btn jelajah fw-bold search-button p-1">
                 <a href="/search">
                   <img src={search} alt="" />
                 </a>
-              </button>
+              </button> */}
             </Form>
           </div>
         </div>
         <div className="container">
           <div className="row d-flex justify-items-center pt-5">
-            {events.map((event) => (
+            {record.map((event) => (
               <div className="col-md-6 mb-5 col-sm col-lg-3">
                   <Card
                     style={{ width: "16rem", height: "auto" }}
@@ -83,6 +112,18 @@ const Allevents = () => {
             ))}
           </div>
         </div>
+          
+      <Pagination >
+        
+        <Pagination.Prev />
+        <Pagination.Item>{1}</Pagination.Item>
+        <Pagination.Ellipsis />
+        {/* <Pagination.Item active>{12}</Pagination.Item> */}        
+        <Pagination.Item>{20}</Pagination.Item>
+        <Pagination.Next />
+        
+      </Pagination>
+
       </Container>
       <Footer />
     </div>
