@@ -117,9 +117,11 @@ const Events = () => {
                   style={{ objectFit: "cover", height: "150px" }}
                   />
                   <Card.Body>
-                    <Card.Title className="text-white title mb-0">
-                      {event.title}
-                    </Card.Title>
+                  <Link to={`/event/${event.id}`}>
+                      <Card.Title className="text-white title mb-0">
+                        {event.title}
+                      </Card.Title>
+                      </Link>
                     <p className="date">
                       <time className="text-white">{event.date}</time>
                     </p>

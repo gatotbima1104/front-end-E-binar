@@ -6,6 +6,7 @@ import Register from './features/register';
 import Allevents from "./pages/allEvents";
 import DetailPage from "./pages/detailPage";
 import InsertEvent from "./pages/insertEvent";
+import Calender from "./pages/calendar";
 
 
 
@@ -19,6 +20,7 @@ function App() {
          <Route path="/events" element={<Allevents />} />
          <Route path="/event/:id" element={<DetailPage />} />
          <Route path="/addEvent" element={<InsertEvent />} />
+         <Route path="/calendar" element={<Calender />} />
         </Routes>
       </Router>
   );

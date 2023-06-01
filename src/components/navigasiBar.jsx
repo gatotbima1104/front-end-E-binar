@@ -18,8 +18,8 @@ const Menu = () => {
             className="justify-content-end"
           >
             <Nav>
-              <Nav.Link href="/" className="text-menu me-2">
-                Category
+              <Nav.Link href="/calendar" className="text-menu me-2">
+                Calendar
               </Nav.Link>
               <Nav.Link href="/events" className="text-menu me-2">
                 About
