@@ -25,7 +25,8 @@ const Allevents = () => {
 
   const fetchDataEvents = async () => {
     try {
-      const eventResponse = await axiosInstance.get("/event");
+      const eventResponse = await axiosInstance.get("/api/event");
+      // console.log(eventResponse.data);
       setEvents(eventResponse.data);
       setRecord(eventResponse.data);
     } catch (error) {}
@@ -80,11 +81,11 @@ const Allevents = () => {
                     style={{ width: "16rem", height: "auto" }}
                     className="m-5 m-auto events"
                   >
-                    <Card.Img variant="top" src={event.image} 
+                    <Card.Img variant="top" src={event.img} 
                     style={{ objectFit: "cover", height: "150px" }}
                     />
                     <Card.Body>
-                    <Link to={`/event/${event.id}`}>
+                    <Link to={`/event/${event.id_event}`} className="backto">
                       <Card.Title className="text-white title mb-0">
                         {event.title}
                       </Card.Title>

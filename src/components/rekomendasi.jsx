@@ -4,16 +4,13 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../lib/axios";
 import owner from "../asset/owner.png";
-const Events = () => {
 
+const Rekomendasi = () => {
   const [events, setEvents] = useState([]);
-
   const fetchDataEvents = async () => {
     try {
       const eventResponse = await axiosInstance.get("/api/event");
-      const sortedEvents = eventResponse.data.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort events by date in descending order
-      const maxEvents = sortedEvents.slice(0, 8); // Retrieve the maximum of 8 events
-      
+      const maxEvents = eventResponse.data.slice(0, 4); 
       setEvents(maxEvents);
     } catch (error) {
       console.log(error);
@@ -25,9 +22,8 @@ const Events = () => {
   }, []);
 
   return (
-    <div id="events" className="border">
+    <div>
       <Container>
-        <h2 className="my-5 newst fs-3 pt-3">Newest</h2>
         <div className="d-flex justify-items-center align-items-center">
           <div className="row d-flex justify-items-center">
             {events.map((event, index) => (
@@ -65,7 +61,7 @@ const Events = () => {
                 </Card>
               </div>
             ))}
-            <div className="text-center my-4">
+            <div className="text-end my-4">
               <Link to="/events">
                 <Button variant="dark" className="jelajah" type="submit">
                   Jelajah Events
@@ -79,4 +75,4 @@ const Events = () => {
   );
 };
 
-export default Events;
+export default Rekomendasi;
