@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../lib/axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { BsCalendarDate, BsClock } from "react-icons/bs";
 import { BiMap, BiLeftArrowAlt } from "react-icons/bi";
@@ -9,6 +9,7 @@ import owner from "../asset/owner.png";
 import Menu from "../components/navigasiBar";
 import Footer from "../components/footer";
 import Rekomendasi from "../components/rekomendasi";
+
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -22,9 +23,16 @@ const DetailPage = () => {
   useEffect(() => {
     fetchDataEvent();
   });
+  
 
   const handleClick = () => {
     window.open(event.link_registration, "_blank");
+  };
+
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
   };
 
   return (
@@ -34,7 +42,7 @@ const DetailPage = () => {
           <Menu />
           <div className="container-fluid mt-3">
             <button className="btn-back">
-              <Link to="/events" className="text-white backto">
+              <Link onClick={handleBack} className="text-white backto">
                 <BiLeftArrowAlt className="me-2 fs-4" />
               </Link>
             </button>

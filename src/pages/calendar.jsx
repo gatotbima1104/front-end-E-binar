@@ -12,7 +12,7 @@ const Calender = () => {
     // Fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await axiosInstance.get("/event");
+        const response = await axiosInstance.get("api/event");
         setEvents(response.data);
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -25,9 +25,9 @@ const Calender = () => {
   // Format the API data to FullCalendar event format
   const formatEventsForCalendar = () => {
     return events.map((event) => ({
-      id: event.id,
+      id: event.id_event,
       title: event.title,
-      start: moment(event.date, "DD MMMM YYYY").format("YYYY-MM-DD"),
+      start: moment(event.date, 'YYYY-MM-DD').format('YYYY-MM-DD'),
       // Other event properties if needed
     }));
   };
@@ -40,6 +40,12 @@ const Calender = () => {
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
           events={formatEventsForCalendar()}
+          contentHeight="auto"
+          contentWidth="auto"
+          eventClick={(info) => {
+            const eventId = info.event.id;
+            window.location.href = `/event/${eventId}`;
+          }}
         />
       </div>
     </div>
