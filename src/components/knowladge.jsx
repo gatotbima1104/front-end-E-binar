@@ -5,28 +5,33 @@ const Knowme = () => {
   return (
     <div
       id="knowMe"
-      className="d-flex align-items-center justify-content-center"
+      className="d-flex"
     >
       <div className="row">
-        <div className="col-md-5">
+
+        <div className="col-md-8">
           <img src={about} alt="" className="foto-about" />
         </div>
-        <div className="col-md-7">
-          <h1 className="text-white text-about mt-5 text-center">ventUS</h1>
-          <p className="text-white text-center mt-5 p-about">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem
-            tempora facilis ipsa, ipsam assumenda impedit perferendis iusto
-            provident tenetur ducimus officia sit! Repudiandae nam sapiente qui.
-            Excepturi a laudantium aut! Lorem ipsum dolor sit, amet consectetur
-            adipisicing elit. Provident commodi ducimus nostrum quas,
-            dignissimos adipisci non est enim, accusamus numquam doloribus
-            magnam. Harum minus . Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit. Quisquam consectetur pariatur excepturi
-            reprehenderit a quos ea iusto vitae ipsa quidem.
+        <div className="col-md-4">
+           <h1 className="text-white text-about mt-5 text-center">ventUS</h1>
+          <p className="text-white my-5 text-center">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem <br />
+            tempora facilis ipsa, ipsam assumenda impedit pe <br />
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem <br />
+            tempora facilis ipsa, ipsam assumenda impedit pe <br />
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem 
+            lorem20
+            
+            
           </p>
-        </div>
+          {/* <p className="text-white text-center my-5">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem
+            tempora facilis ipsa, ipsam assumenda impedit pe
+          </p> */}
+        </div> 
+      </div> 
+    
       </div>
-    </div>
   );
 };
 

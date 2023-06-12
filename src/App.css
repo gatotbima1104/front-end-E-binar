@@ -5,11 +5,7 @@
   /* overflow-x: hidden; */
 }
 
-#knowme {
-  /* height: 50vh; */
-  height: 200px;
-  background-color: #1e1e1e;
-}
+
 
 .maintext {
   font-family: "Inter";
@@ -128,7 +124,7 @@ ul {
 font-style: normal;
 font-weight: 700;
 font-size: 28px;
-line-height: 33px;
+/* line-height: 33px; */
 /* identical to box height */
 
 letter-spacing: 0.24em;
