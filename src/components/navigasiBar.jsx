@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 // import iconCalendar from '../asset/calendarLogo.png';
 import logo from "../asset/logo.png";
-import calendar from "../asset/calendar.png";
+// import calendar from "../asset/calendar.png";
 
 const Menu = () => {
   return (
@@ -21,15 +21,15 @@ const Menu = () => {
               <Nav.Link href="/calendar" className="text-menu me-2">
                 Calendar
               </Nav.Link>
-              <Nav.Link href="/events" className="text-menu me-2">
+              {/* <Nav.Link href="/events" className="text-menu me-2">
                 About
-              </Nav.Link>
+              </Nav.Link> */}
               <Nav.Link href="/events" className="text-menu me-4">
                 Discover
               </Nav.Link>
-              <Nav.Link href="/calendar" className="text-menu">
+              {/* <Nav.Link href="/calendar" className="text-menu">
                 <img src={calendar} className="w-10 logo-calendar" alt="calendar-logo"/>
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
