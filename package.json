@@ -1,6 +1,7 @@
 {
   "name": "todo-list",
   "version": "0.1.0",
+  "homepage": "https://ventus.achmadsyarif.com/",
   "private": true,
   "dependencies": {
     "@fullcalendar/daygrid": "^6.1.8",
