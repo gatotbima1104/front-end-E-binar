@@ -5,7 +5,7 @@ import { Container, Card, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
-import owner from "../asset/owner.png";
+import blank from "../asset/blank-profile.jpg";
 import ReactPaginate from "react-paginate";
 
 const Allevents = () => {
@@ -98,10 +98,10 @@ const Allevents = () => {
                         <div className="col-md-6">
                           <div className="row d-flex mt-1">
                             <div className="col-md-4">
-                              <img src={owner} alt="author icon" />
+                              <img src={blank} alt="author icon" />
                             </div>
                             <div className="col-md-8 text-white author-loc align-items-center">
-                              <p className="">Jayapura</p>
+                              <p className="">{event.User.username}</p>
                             </div>
                           </div>
                         </div>

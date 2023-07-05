@@ -3,7 +3,8 @@ import { Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../lib/axios";
-import owner from "../asset/owner.png";
+import blank from "../asset/blank-profile.jpg";
+
 
 const Rekomendasi = () => {
   const [events, setEvents] = useState([]);
@@ -49,10 +50,10 @@ const Rekomendasi = () => {
                       <div className="col-md-6">
                         <div className="row d-flex mt-1">
                           <div className="col-md-4">
-                            <img src={owner} alt="author icon" />
+                            <img src={blank} alt="author icon" />
                           </div>
                           <div className="col-md-8 text-white author-loc align-items-center">
-                            <p>Jayapura</p>
+                            <p>{event.User.username}</p>
                           </div>
                         </div>
                       </div>
