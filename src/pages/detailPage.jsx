@@ -5,7 +5,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { BsCalendarDate, BsClock } from "react-icons/bs";
 import { BiMap, BiLeftArrowAlt } from "react-icons/bi";
-import owner from "../asset/owner.png";
+import blank from "../asset/profile.png";
 import Menu from "../components/navigasiBar";
 import Footer from "../components/footer";
 import Rekomendasi from "../components/rekomendasi";
@@ -93,10 +93,10 @@ const DetailPage = () => {
 
                 <div className="row d-flex mt-5 border-top pt-3">
                   <div className="col-md-2">
-                    <img src={owner} alt="author icon" />
+                    <img src={blank} alt="author icon" />
                   </div>
                   <div className="col-md-8">
-                    <p>Jayapura</p>
+                    <p>{event.User.username}</p>
                   </div>
                 </div>
               </div>

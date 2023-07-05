@@ -5,7 +5,7 @@ import { Container, Card, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
-import blank from "../asset/blank-profile.jpg";
+import blank from "../asset/profile.png";
 import ReactPaginate from "react-paginate";
 
 const Allevents = () => {
@@ -93,7 +93,7 @@ const Allevents = () => {
                       <p className="date">
                         <time className="text-white">{event.date}</time>
                       </p>
-                      <h5 className="text-white card-price">Rp{event.price}k</h5>
+                      <h5 className="text-white card-price">Rp{event.price}</h5>
                       <div className="row pt-2 line">
                         <div className="col-md-6">
                           <div className="row d-flex mt-1">
