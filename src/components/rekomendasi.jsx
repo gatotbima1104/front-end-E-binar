@@ -3,7 +3,7 @@ import { Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../lib/axios";
-import blank from "../asset/profile.png";
+import blank from "../asset/owner.png";
 
 
 const Rekomendasi = () => {

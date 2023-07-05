@@ -5,7 +5,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { BsCalendarDate, BsClock } from "react-icons/bs";
 import { BiMap, BiLeftArrowAlt } from "react-icons/bi";
-import blank from "../asset/profile.png";
+import blank from "../asset/owner.png";
 import Menu from "../components/navigasiBar";
 import Footer from "../components/footer";
 import Rekomendasi from "../components/rekomendasi";

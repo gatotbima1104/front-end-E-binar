@@ -5,7 +5,7 @@ import { Container, Card, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
-import blank from "../asset/profile.png";
+import blank from "../asset/owner.png";
 import ReactPaginate from "react-paginate";
 
 const Allevents = () => {
